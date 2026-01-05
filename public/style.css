@@ -1,0 +1,140 @@
+
+/* Reset & base */
+*{box-sizing:border-box}
+:root{
+  --bg:#f6f7f8;
+  --panel:#fff;
+  --muted:#7b8089;
+  --accent:#176a33;
+  --accent-2:#1f8a3e;
+  --danger:#e53935;
+  --shadow: 0 6px 20px rgba(23,106,51,0.06);
+  --radius:12px;
+  --maxwidth:820px;
+}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background:var(--bg);
+  color:#1f2933;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* layout */
+.app{display:flex;height:100vh;gap:20px}
+
+/* sidebar */
+.sidebar{
+  width:220px;
+  background:var(--panel);
+  border-right:1px solid #e6e6e6;
+  padding:18px 12px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.new-chat-btn{
+  background:linear-gradient(180deg,var(--accent),var(--accent-2));
+  color:#fff;border:0;padding:10px;border-radius:10px;font-weight:600;cursor:pointer;
+  display:flex;gap:8px;align-items:center;justify-content:center;
+}
+.history{flex:1;overflow:auto;padding-right:6px;display:flex;flex-direction:column;gap:8px}
+.chat-item{
+  padding:8px 10px;border-radius:8px;border:1px solid #f0f0f0;cursor:pointer;color:#2b3440;font-size:14px;
+}
+.chat-item:hover{background:#f3faf4}
+.sidebar-footer{font-size:12px;color:var(--muted);text-align:center;padding-top:8px}
+
+/* main area */
+.main{flex:1;display:flex;flex-direction:column}
+
+/* header */
+.main-header{padding:18px 24px;border-bottom:1px solid #eee;background:transparent}
+.title{font-size:20px;font-weight:700;color:var(--accent)}
+.sub{font-size:13px;color:var(--muted);margin-top:4px}
+
+/* chat area centered with boxed panel */
+.chat-area{flex:1;display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:28px}
+.chat-box{
+  width:100%;
+  max-width:var(--maxwidth);
+  background:var(--panel);
+  border-radius:var(--radius);
+  padding:20px;
+  box-shadow:var(--shadow);
+  border:1px solid #e9eceb;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+/* welcome card */
+.welcome{background:#fafafa;padding:18px;border-radius:10px;border:1px dashed #e8ece8;text-align:center;color:#294133}
+.welcome h3{margin:0 0 6px 0;color:var(--accent)}
+.examples{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.examples button{background:#fff;border:1px solid #e6e6e6;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:13px}
+
+/* messages */
+.msg-row{display:flex;gap:8px;align-items:flex-start}
+.bot-msg, .user-msg{
+  max-width:100%;
+  width:fit-content;
+  padding:12px 14px;
+  border-radius:10px;
+  font-size:15px;
+  line-height:1.6;
+  white-space:pre-wrap;
+  word-break:break-word;
+  overflow-wrap:break-word;
+}
+.bot-msg{
+  background:#fff;
+  border:1px solid #ececec;
+  align-self:flex-start;
+}
+.user-msg{
+  background:linear-gradient(180deg,#d9ecff,#cfeffb);
+  color:#083049;
+  align-self:flex-end;
+}
+
+/* typing indicator */
+.typing{
+  display:inline-flex;gap:6px;align-items:center;padding:8px 10px;border-radius:12px;background:#f0fbf0;border:1px solid #e6f3e8
+}
+.typing span{width:7px;height:7px;background:var(--accent);border-radius:50%;opacity:0.4;animation:blink 1s infinite}
+.typing span:nth-child(2){animation-delay:.15s}
+.typing span:nth-child(3){animation-delay:.3s}
+@keyframes blink{0%{opacity:0.2}50%{opacity:1}100%{opacity:0.2}}
+
+/* input bar bottom */
+.input-bar{
+  border-top:1px solid #eee;
+  background:transparent;padding:14px 24px;
+  display:flex;justify-content:center;
+}
+.input-inner{
+  width:100%;max-width:var(--maxwidth);display:flex;align-items:flex-end;gap:10px;
+}
+#user-input{
+  flex:1;min-height:44px;max-height:180px;resize:none;padding:12px 14px;border-radius:10px;border:1px solid #ddd;background:#fff;font-size:15px;
+  line-height:1.5;outline:none;
+}
+#user-input:focus{box-shadow:0 4px 18px rgba(23,106,51,0.06);border-color:var(--accent)}
+.icon-btn{width:46px;height:46px;border-radius:10px;border:0;background:var(--accent);color:#fff;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:16px}
+.icon-btn.stop{background:var(--danger)}
+.action-btns{display:flex;gap:8px}
+
+/* small responsive tweaks */
+@media (max-width: 980px){
+  .sidebar{display:none}
+  .chat-box{margin:0 12px;padding:16px}
+  .input-inner{max-width:95%}
+  :root{--maxwidth:680px}
+}
+@media (max-width:480px){
+  #user-input{font-size:14px;padding:10px}
+  .icon-btn{width:42px;height:42px}
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>CropGuard AI — Chat</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+  <div class="app">
+
+    <!-- LEFT SIDEBAR (ChatGPT-like) -->
+    <aside class="sidebar">
+      <button id="new-chat" class="new-chat-btn"><i class="fa fa-plus"></i> New chat</button>
+      <nav id="history" class="history">
+        <!-- dynamic chats will be listed here -->
+      </nav>
+
+      <div class="sidebar-footer">
+        <small>CropGuard AI</small>
+      </div>
+    </aside>
+
+    <!-- MAIN AREA -->
+    <main class="main">
+
+      <!-- header -->
+      <header class="main-header">
+        <div class="title">CropGuard AI</div>
+        <div class="sub">Your farming assistant — Ask in Hindi / English</div>
+      </header>
+
+      <!-- chat container (centered boxed panel) -->
+      <section id="chat-area" class="chat-area">
+        <div id="chat-box" class="chat-box">
+          <div class="welcome">
+            <h3>Welcome to CropGuard AI</h3>
+            <p>Ask about crops, pests, soil, weather, mandi prices and government schemes.</p>
+            <div class="examples">
+              <button onclick="quickQuestion('धान में ब्लास्ट बीमारी के लक्षण और इलाज क्या हैं?')">धान ब्लास्ट — इलाज</button>
+              <button onclick="quickQuestion('When to apply urea for wheat?')">Wheat — urea timing</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- input bar -->
+      <div class="input-bar">
+        <div class="input-inner">
+          <button id="mic-btn" class="icon-btn" title="Voice input (Hindi/English)">
+            <i class="fa fa-microphone"></i>
+          </button>
+
+          <textarea id="user-input" placeholder="Message CropGuard AI…" rows="1"></textarea>
+
+          <div class="action-btns">
+            <button id="send-btn" class="icon-btn send" title="Send">
+              <i class="fa fa-paper-plane"></i>
+            </button>
+            <button id="stop-btn" class="icon-btn stop" title="Stop" style="display:none;">
+              <i class="fa fa-stop"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
